@@ -7,24 +7,14 @@ using UnityEngine;
 public class ChapterLoader : MonoBehaviourSingleton<ChapterLoader>
 {
     private CardConfig[] _chapterCards;
+    private CharacterConfig[] _characters;
 
     public CardConfig[] ChapterCards => _chapterCards;
+    public CharacterConfig[] Characters => _characters;
 
     private void Awake()
     {
         _chapterCards = Resources.LoadAll<CardConfig>("AliceSpeech");
-        Debug.Log(_chapterCards[0].DescriptionRu);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _characters = Resources.LoadAll<CharacterConfig>("Characters");
     }
 }

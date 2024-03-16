@@ -10,15 +10,12 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private float _distanceMoved;
     private bool _isDragged = false;
     
-    private GameManager gameManager;
-    
     public delegate void CardMovedToLeftHandler(bool isLeft);
     public event CardMovedToLeftHandler CardMoved;
 
     private void Awake()
     {
-        gameManager = GameManager.Instance;
-        gameManager.CurrentCardSwipe = this;
+
     }
 
     public void OnDrag(PointerEventData eventData)

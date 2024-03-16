@@ -12,7 +12,6 @@ public class Utils : MonoBehaviour
 
     public static int GetCurrentScreenWidth()
     {
-        Debug.Log(Screen.width);
         return Screen.width;
     }
 }

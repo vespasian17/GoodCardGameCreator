@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 7033058802293432136}
   - component: {fileID: 7740675318996390380}
   - component: {fileID: 1204482337643947018}
-  - component: {fileID: 6151600543023916326}
+  - component: {fileID: 4964669042490705744}
   m_Layer: 0
   m_Name: CardBackground
   m_TagString: Untagged
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a22c0a5d14f9e4a943fd075d872330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6151600543023916326
+--- !u!114 &4964669042490705744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,11 +211,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2472572761611277234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7534a7e7e80640642a21338c545d6ca5, type: 3}
+  m_Script: {fileID: 11500000, guid: a2bf3631e73a43b419a18b463f16e9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 2472572761611277234}
-  cardContainerPosition: {fileID: 0}
+  background: {fileID: 7740675318996390380}
+  icon: {fileID: 0}
+  rightText: {fileID: 5032060012320928204}
+  leftText: {fileID: 7777889160986954625}
+  canvas: {fileID: 5789082983832262888}
+  characterIconPos: {x: 0, y: 0, z: 0}
 --- !u!1 &2565678768926761165
 GameObject:
   m_ObjectHideFlags: 0
