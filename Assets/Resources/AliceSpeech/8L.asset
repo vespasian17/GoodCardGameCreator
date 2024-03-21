@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d59045085894e845ab9c8ca69c016e1, type: 3}
+  m_Name: 8L
+  m_EditorClassIdentifier: 
+  defaultCardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardSprite: {fileID: 0}
+  withCharacter: 0
+  character: 0
+  nextContainer: 0
+  cardsContainer: {fileID: 0}
+  randomNextCard: 0
+  cardsContainerRandom: {fileID: 0}
+  descriptionRu: "\u2014 \u041E\u0442\u0441\u043E\u0441\u0438"
+  descriptionEn: '- Suck my..'
+  leftSwipe:
+    nextCard: {fileID: 11400000, guid: 3d6b4a3034e448e429e6e1678c448d08, type: 2}
+    choiceRu: "\u042F \u0441\u043A\u0430\u0437\u0430\u043B \u0432\u043E\u043B\u0448\u0435\u0431\u043D\u043E\u0435"
+    choiceEn: I said true magic word
+    statChanges: []
+  rightSwipe:
+    nextCard: {fileID: 11400000, guid: 7d9c03ba272fa7e45ac5c11dcde5a4d8, type: 2}
+    choiceRu: "\u041E\u043A\u043E\u043D\u0447\u0430\u0442\u0435\u043B\u044C\u043D\u043E
+      \u0443\u0439\u0442\u0438"
+    choiceEn: Leave for good
+    statChanges: []
+  endGameType: 0
+  isLastCard: 0

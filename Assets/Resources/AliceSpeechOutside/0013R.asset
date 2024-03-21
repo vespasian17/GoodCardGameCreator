@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d59045085894e845ab9c8ca69c016e1, type: 3}
+  m_Name: 0013R
+  m_EditorClassIdentifier: 
+  defaultCardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardSprite: {fileID: 0}
+  withCharacter: 0
+  character: 0
+  nextContainer: 0
+  cardsContainer: {fileID: 0}
+  randomNextCard: 0
+  cardsContainerRandom: {fileID: 0}
+  descriptionRu: "\u2014 \u041D\u0435-\u0430. \u041C\u043E\u0438 \u0441\u043B\u0443\u0433\u0438
+    \u043D\u0435 \u0443\u043C\u0435\u044E\u0442 \u0440\u0430\u0437\u0433\u043E\u0432\u0430\u0440\u0438\u0432\u0430\u0442\u044C"
+  descriptionEn: '- Nope. My servants can''t talk'
+  leftSwipe:
+    nextCard: {fileID: 11400000, guid: 2e3d8c73be688eb42a4cee02125ffdd9, type: 2}
+    choiceRu: "\u0423 \u0442\u0435\u0431\u044F \u0435\u0441\u0442\u044C \u0441\u043B\u0443\u0433\u0438?"
+    choiceEn: Do you have servants?
+    statChanges: []
+  rightSwipe:
+    nextCard: {fileID: 11400000, guid: 2e3d8c73be688eb42a4cee02125ffdd9, type: 2}
+    choiceRu: "\u041F\u043E\u0447\u0435\u043C\u0443 \u043E\u043D\u0438 \u043D\u0435
+      \u0443\u043C\u0435\u044E\u0442 \u0440\u0430\u0437\u0433\u043E\u0432\u0430\u0440\u0438\u0432\u0430\u0442\u044C?"
+    choiceEn: Why can't they talk?
+    statChanges: []
+  endGameType: 0
+  isLastCard: 1

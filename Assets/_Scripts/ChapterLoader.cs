@@ -1,20 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Configs;
 using Source.Scripts.Configs;
 using UnityEngine;
 
 public class ChapterLoader : MonoBehaviourSingleton<ChapterLoader>
 {
-    private CardConfig[] _chapterCards;
-    private CharacterConfig[] _characters;
+    private CardData[] _chapterCards;
+    private CharacterData[] _characters;
+    private StatData[] _statsData;
 
-    public CardConfig[] ChapterCards => _chapterCards;
-    public CharacterConfig[] Characters => _characters;
+    public CardData[] ChapterCards => _chapterCards;
+    public CharacterData[] Characters => _characters;
+    public StatData[] StatsData => _statsData;
 
     private void Awake()
     {
-        _chapterCards = Resources.LoadAll<CardConfig>("AliceSpeech");
-        _characters = Resources.LoadAll<CharacterConfig>("Characters");
+        //need to realise load saved card
+        //Можно подгружать 1 объект, ссылки работают
+        _statsData = Resources.LoadAll<StatData>("Stats");
+        _chapterCards = Resources.LoadAll<CardData>("AliceSpeech");
+        _characters = Resources.LoadAll<CharacterData>("Characters");
     }
 }

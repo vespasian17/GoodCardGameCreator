@@ -4,24 +4,23 @@ using System.Collections.Generic;
 using Source.Scripts.Configs;
 using UnityEngine;
 
-public class CardInstantiator : MonoBehaviour
+public class CardInstantiator : MonoBehaviour                   //Just instancing empty card object
 {
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform cardContainer;
     private SwipeEffect _swipeEffect;
     private SwipeEffect _newSwipeEffect;
     private Card _newCreatedCard;
+    private bool? _isLeft;
+    
+    public event Action CardCreated;
 
     public Card NewCreatedCard => _newCreatedCard;
-    
-
-    private void Awake()
-    {
-        //_swipeEffect.CardMoved += OnCardCreated;
-    }
+    public bool? IsLeftSwipe => _isLeft;
 
     private void Start()
     {
+        SpawnNewCardAsChild(cardContainer);
         SubscribeOnSwipeEffect();
     }
 
@@ -31,7 +30,7 @@ public class CardInstantiator : MonoBehaviour
         return false;
     }
 
-    private void SubscribeOnSwipeEffect()
+    private void SubscribeOnSwipeEffect()       //Подписка на новый свайп созданной карты
     {
         if (ChildsCheck(cardContainer))
         {
@@ -58,18 +57,15 @@ public class CardInstantiator : MonoBehaviour
         newCard.transform.rotation = Quaternion.identity;
 
         _newSwipeEffect = newCard.GetComponent<SwipeEffect>();
+        _newCreatedCard = newCard.GetComponent<Card>();
+        CardCreated?.Invoke();
     }
 
-    public void OnCardCreated(bool isLeft)
+    public void OnCardCreated(bool? isLeft)      //вызывается true если влево, false если вправо
     {
+        _isLeft = isLeft;
         _swipeEffect.CardMoved -= OnCardCreated;
-        //realize isLeft function to spawn card
         SpawnNewCardAsChild(cardContainer);
         SubscribeOnSwipeEffect();
-    }
-
-    public Card GetCreatedCard()
-    {
-        return NewCreatedCard;
     }
 }

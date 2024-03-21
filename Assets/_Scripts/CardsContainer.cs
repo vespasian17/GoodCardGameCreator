@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CardsContainer", menuName = "Configs/CardsContainer")]
 public class CardsContainer : ScriptableObject
 {
-    [SerializeField] private CardConfig[] cards;
+    [SerializeField] private CardData[] cards;
 
-    public CardConfig[] Cards => cards;
+    public CardData[] Cards => cards;
 }

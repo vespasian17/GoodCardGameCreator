@@ -28,7 +28,7 @@ MonoBehaviour:
   descriptionEn: Despite her position, she doesn't look scared. She's just looking
     at you
   leftSwipe:
-    nextCard: {fileID: 0}
+    nextCard: {fileID: 11400000, guid: 7d9c03ba272fa7e45ac5c11dcde5a4d8, type: 2}
     choiceRu: "\u0412\u044B\u0439\u0442\u0438 \u0438\u0437 \u0441\u0430\u0440\u0430\u044F"
     choiceEn: Get out of the barn
     statChanges: []

@@ -2,20 +2,27 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
+using Color = UnityEngine.Color;
 
 public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    [SerializeField] private float _distanceForSwipeCommit = 400;
+    [SerializeField] private Color _swipeReadyColor = Color.grey;
     private Vector3 _initialPosition;
-    private bool _swipeLeft;
+    private bool? _swipeLeft;
     private float _distanceMoved;
     private bool _isDragged = false;
+    private bool _isColorChanged = false;
+    private Color _defaultColor;
+
     
-    public delegate void CardMovedToLeftHandler(bool isLeft);
+    public delegate void CardMovedToLeftHandler(bool? isLeft);
     public event CardMovedToLeftHandler CardMoved;
 
     private void Awake()
     {
-
+        _defaultColor = GetComponent<SpriteRenderer>().color;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -32,6 +39,22 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             transform.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(0, 30,
                 (_initialPosition.x - transform.localPosition.x)/(Screen.width/2)));
         }
+        
+        if (Mathf.Abs(transform.localPosition.x) > _distanceForSwipeCommit)
+        {
+            if (!_isColorChanged)
+            {
+                transform.GetComponent<SpriteRenderer>().color = _swipeReadyColor;
+                _isColorChanged = true;
+                Debug.Log("color change to new");
+            }
+        }
+        else if (_isColorChanged)
+        {
+            Debug.Log("color change to default");
+            _isColorChanged = false;
+            transform.GetComponent<SpriteRenderer>().color = _defaultColor;
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -44,7 +67,7 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         _distanceMoved = Mathf.Abs(transform.localPosition.x - _initialPosition.x);
-        if (_distanceMoved < 0.4f * Screen.width)
+        if (_distanceMoved < _distanceForSwipeCommit)
         {
             transform.localPosition = _initialPosition;
             transform.localEulerAngles = Vector3.zero;
@@ -71,7 +94,7 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         while (_isDragged)
         {
             time += Time.deltaTime;
-            if (_swipeLeft)
+            if (_swipeLeft == true)
             {
                 transform.localPosition = new Vector3(Mathf.SmoothStep(transform.localPosition.x,
                     transform.localPosition.x - Screen.width, 4* time), transform.localPosition.y, 0);

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d59045085894e845ab9c8ca69c016e1, type: 3}
+  m_Name: 4R
+  m_EditorClassIdentifier: 
+  defaultCardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardSprite: {fileID: 0}
+  withCharacter: 0
+  character: 0
+  nextContainer: 0
+  cardsContainer: {fileID: 0}
+  randomNextCard: 0
+  cardsContainerRandom: {fileID: 0}
+  descriptionRu: "\u2014 \u0417\u0430\u0432\u044F\u0437\u044B\u0432\u0430\u0439 \u0441
+    \u0431\u043E\u043B\u0442\u043E\u0432\u043D\u0435\u0439 \u0438 \u0440\u0430\u0437\u0432\u044F\u0437\u044B\u0432\u0430\u0439
+    \u043C\u0435\u043D\u044F"
+  descriptionEn: '- Quit talking and free me'
+  leftSwipe:
+    nextCard: {fileID: 11400000, guid: a5ba0af9c9de15d4e9a65035946935f5, type: 2}
+    choiceRu: "\u0420\u0430\u0437\u0432\u044F\u0437\u0430\u0442\u044C \u0435\u0439
+      \u0440\u0443\u043A\u0438"
+    choiceEn: Untie her hands
+    statChanges: []
+  rightSwipe:
+    nextCard: {fileID: 11400000, guid: 06dd577fae286cf4a9bb24462deb33f4, type: 2}
+    choiceRu: "\u0420\u0430\u0437\u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F
+      \u0438 \u0443\u0439\u0442\u0438"
+    choiceEn: Turn around and leave
+    statChanges: []
+  endGameType: 0
+  isLastCard: 0

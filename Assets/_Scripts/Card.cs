@@ -27,21 +27,28 @@ public class Card : MonoBehaviour
         
     }
     
-    public void SetCardData(CardConfig cardData, CharacterConfig charcterData)
+    public void SetCardData(CardData cardData, CharacterData charcterData)
     {
         if (charcterData != null)
         {
             //back.DOColor(characterConfig.CardColor, animDuration);
-            icon.sprite = charcterData.Sprite;
-            icon.transform.localPosition = characterIconPos;
+            //icon.sprite = charcterData.Sprite;
+            //icon.transform.localPosition = characterIconPos;
         }
         else
         {
             //back.DOColor(cardData.DefaultCardColor, animDuration);
-            icon.sprite = cardData.CardSprite;
-            icon.transform.localPosition = Vector3.zero;
+            //icon.sprite = cardData.CardSprite;
+            //icon.transform.localPosition = Vector3.zero;
         }
             
+        var isRu = YandexGame.savesData.language == "ru";
+        rightText.text = isRu ? cardData.RightSwipe.choiceRu : cardData.RightSwipe.choiceEn;
+        leftText.text = isRu ? cardData.LeftSwipe.choiceRu : cardData.LeftSwipe.choiceEn;
+    }
+    
+    public void SetCardData(CardData cardData)
+    {
         var isRu = YandexGame.savesData.language == "ru";
         rightText.text = isRu ? cardData.RightSwipe.choiceRu : cardData.RightSwipe.choiceEn;
         leftText.text = isRu ? cardData.LeftSwipe.choiceRu : cardData.LeftSwipe.choiceEn;

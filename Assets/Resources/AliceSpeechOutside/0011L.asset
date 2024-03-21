@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d59045085894e845ab9c8ca69c016e1, type: 3}
+  m_Name: 0011L
+  m_EditorClassIdentifier: 
+  defaultCardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardSprite: {fileID: 0}
+  withCharacter: 0
+  character: 0
+  nextContainer: 0
+  cardsContainer: {fileID: 0}
+  randomNextCard: 0
+  cardsContainerRandom: {fileID: 0}
+  descriptionRu: "\u2014 \u0415\u0441\u043B\u0438 \u043D\u0435 \u0443\u0431\u0438\u043B\u0438,
+    \u0442\u043E \u0437\u043D\u0430\u0447\u0438\u0442 \u0438\u043C \u0447\u0442\u043E-\u0442\u043E
+    \u043E\u0442 \u043D\u0430\u0441 \u043D\u0443\u0436\u043D\u043E"
+  descriptionEn: '- If they didn''t kill us, it means they want something from us'
+  leftSwipe:
+    nextCard: {fileID: 11400000, guid: 4fd10a29e6b4b9d4d8684da20d32dc29, type: 2}
+    choiceRu: "\u041C\u043E\u0436\u0435\u0442 \u0438\u043C \u043D\u0443\u0436\u043D\u043E
+      \u043D\u0430\u0448\u0435 \u0441\u0432\u0435\u0436\u0435\u0435 \u043C\u044F\u0441\u043E?"
+    choiceEn: Maybe they want us as fresh meat
+    statChanges: []
+  rightSwipe:
+    nextCard: {fileID: 11400000, guid: 4fd10a29e6b4b9d4d8684da20d32dc29, type: 2}
+    choiceRu: "\u041C\u043E\u0436\u0435\u0442 \u0438\u043C \u043D\u0443\u0436\u0435\u043D
+      \u0432\u044B\u043A\u0443\u043F?"
+    choiceEn: Maybe they need a ransom?
+    statChanges: []
+  endGameType: 0
+  isLastCard: 0

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d59045085894e845ab9c8ca69c016e1, type: 3}
+  m_Name: 0024
+  m_EditorClassIdentifier: 
+  defaultCardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardSprite: {fileID: 0}
+  withCharacter: 0
+  character: 0
+  nextContainer: 0
+  cardsContainer: {fileID: 0}
+  randomNextCard: 0
+  cardsContainerRandom: {fileID: 0}
+  descriptionRu: "\u2014 \u0428\u0435\u044E"
+  descriptionEn: '- Your neck'
+  leftSwipe:
+    nextCard: {fileID: 11400000, guid: 7ec545cf5bfc6644b8568177cb307f75, type: 2}
+    choiceRu: "\u041D\u0443 \u0434\u0430\u0432\u0430\u0439 \u0448\u0435\u044E"
+    choiceEn: Okay. My neck
+    statChanges: []
+  rightSwipe:
+    nextCard: {fileID: 11400000, guid: 00415e70479f8654ea46af8795dc31b2, type: 2}
+    choiceRu: "\u041D\u0430 \u0442\u0430\u043A\u0438\u0435 \u0440\u0438\u0441\u043A\u0438
+      \u0438\u0434\u0442\u0438 \u043D\u0435 \u0445\u043E\u0447\u0443"
+    choiceEn: I don't want to take that kind of risk
+    statChanges: []
+  endGameType: 0
+  isLastCard: 0

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d59045085894e845ab9c8ca69c016e1, type: 3}
+  m_Name: 18R
+  m_EditorClassIdentifier: 
+  defaultCardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardSprite: {fileID: 0}
+  withCharacter: 0
+  character: 0
+  nextContainer: 0
+  cardsContainer: {fileID: 0}
+  randomNextCard: 0
+  cardsContainerRandom: {fileID: 0}
+  descriptionRu: "\u2014 \u042F \u043C\u043E\u0433\u0443. \u041F\u043E \u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043D\u0438\u044E.
+    \u0412\u0441\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043E\u0442 \u0442\u0435\u0431\u044F.
+    \u041D\u043E \u043F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0430\u044E,
+    \u0435\u0441\u043B\u0438 \u0442\u044B \u043D\u0430\u0447\u043D\u0435\u0448\u044C
+    \u0431\u043E\u044F\u0442\u044C\u0441\u044F, \u0442\u043E \u044D\u0442\u043E \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0435
+    \u0447\u0442\u043E \u0442\u044B \u043E\u0449\u0443\u0442\u0438\u0448\u044C \u0432
+    \u0441\u0432\u043E\u0435\u0439 \u0436\u0438\u0437\u043D\u0438"
+  descriptionEn: '- I can. Depends on the mood. It''s up to you. But I warn you,
+    if you get scared, it''s the last thing you''ll ever feel in your life.'
+  leftSwipe:
+    nextCard: {fileID: 11400000, guid: 694878c58a77e42439a68b71e00f9fb2, type: 2}
+    choiceRu: "\u041B\u0430\u0434\u043D\u043E"
+    choiceEn: All right. Okay
+    statChanges: []
+  rightSwipe:
+    nextCard: {fileID: 11400000, guid: f4873ccae3c6247499ae0d8c21d4daac, type: 2}
+    choiceRu: "\u0418 \u043A\u043E\u0433\u0434\u0430 \u0443 \u0442\u0435\u0431\u044F
+      \u043F\u043E\u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043D\u0438\u0435?"
+    choiceEn: And when do you get in the mood?
+    statChanges: []
+  endGameType: 0
+  isLastCard: 0

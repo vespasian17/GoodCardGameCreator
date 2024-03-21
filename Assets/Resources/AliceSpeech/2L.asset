@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d59045085894e845ab9c8ca69c016e1, type: 3}
+  m_Name: 2L
+  m_EditorClassIdentifier: 
+  defaultCardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardSprite: {fileID: 0}
+  withCharacter: 0
+  character: 0
+  nextContainer: 0
+  cardsContainer: {fileID: 0}
+  randomNextCard: 0
+  cardsContainerRandom: {fileID: 0}
+  descriptionRu: "\u0414\u0435\u0432\u0443\u0448\u043A\u0430 \u043D\u0430 \u0443\u0434\u0438\u0432\u043B\u0435\u043D\u0438\u0435
+    \u043B\u0435\u0433\u043A\u043E \u0440\u0430\u0437\u0432\u044F\u0437\u0430\u043B\u0430
+    \u0443\u0437\u043B\u044B \u043D\u0430 \u043D\u043E\u0433\u0430\u0445"
+  descriptionEn: The girl untied the knots on her legs with surprising ease
+  leftSwipe:
+    nextCard: {fileID: 11400000, guid: d50401ba01c2c9145a94627e0fe3de8f, type: 2}
+    choiceRu: "\u0410 \u0442\u044B \u043B\u043E\u0432\u043A\u0430\u044F"
+    choiceEn: Wow.. you're slick
+    statChanges: []
+  rightSwipe:
+    nextCard: {fileID: 11400000, guid: fab7aef7791ccf44481687fd3e9c2b6c, type: 2}
+    choiceRu: "\u041A\u0430\u043A \u0442\u0435\u0431\u044F \u0437\u043E\u0432\u0443\u0442?"
+    choiceEn: What's your name?
+    statChanges: []
+  endGameType: 0
+  isLastCard: 0
