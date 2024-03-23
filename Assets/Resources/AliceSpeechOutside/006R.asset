@@ -29,7 +29,7 @@ MonoBehaviour:
     choiceEn: Follow Alice
     statChanges: []
   rightSwipe:
-    nextCard: {fileID: 11400000, guid: 47c14f7168263e84594072313d9f355d, type: 2}
+    nextCard: {fileID: 11400000, guid: 1dcc8673976c0594ca02221a8f20b735, type: 2}
     choiceRu: "\u041D\u0430\u043F\u0430\u0441\u0442\u044C \u043D\u0430 \u043D\u0435\u0435.
       \u041E\u043D\u0430 \u0431\u0435\u0441\u0438\u0442"
     choiceEn: Attack her. She's infuriating

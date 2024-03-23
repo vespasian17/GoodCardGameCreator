@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9426a65228acc8e47a9ba11d142e7d57, type: 3}
-  m_Name: AliceRelationship
+  m_Name: Alice
   m_EditorClassIdentifier: 
-  stats:
-  - type: 0
-    sprite: {fileID: 0}
-    nameRu: "\u041E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u044F"
-    nameEn: Relationship
-    color: {r: 0, g: 0, b: 0, a: 0}
-    startValue: 10
-    maxValue: 20
+  type: 0
+  sprite: {fileID: 0}
+  nameRu: "\u0410\u043B\u0438\u0441\u0430"
+  nameEn: Alice
+  color: {r: 0, g: 0, b: 0, a: 0}
+  startValue: 10
+  maxValue: 20
+  defaultValue: 10

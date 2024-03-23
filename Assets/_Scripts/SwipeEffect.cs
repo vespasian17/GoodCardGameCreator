@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.PlayerLoop;
 using Color = UnityEngine.Color;
 
+public delegate void CardMovedToLeftHandler(bool? isLeft);
 public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField] private float _distanceForSwipeCommit = 400;
@@ -15,11 +14,14 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private bool _isDragged = false;
     private bool _isColorChanged = false;
     private Color _defaultColor;
-
     
-    public delegate void CardMovedToLeftHandler(bool? isLeft);
-    public event CardMovedToLeftHandler CardMoved;
+    public event CardMovedToLeftHandler CardMovedToLeft;
 
+
+    public void RegisterHandler(CardMovedToLeftHandler cardMoved)
+    {
+        CardMovedToLeft = cardMoved;
+    }
     private void Awake()
     {
         _defaultColor = GetComponent<SpriteRenderer>().color;
@@ -83,7 +85,7 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                 _swipeLeft = true;
             }
             _isDragged = false;
-            CardMoved?.Invoke(_swipeLeft);
+            CardMovedToLeft?.Invoke(_swipeLeft);
             StartCoroutine(MovedCard());
         }
     }

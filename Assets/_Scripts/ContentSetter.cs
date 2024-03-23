@@ -1,5 +1,3 @@
-using System;
-using _Scripts.Save;
 using Source.Scripts.Configs;
 using TMPro;
 using Unity.VisualScripting;
@@ -16,6 +14,8 @@ namespace _Scripts
         private CardData _currentCardData;
         private bool _isGameLoaded;
         private SaveData _saveData;
+
+        public CardData CurrentCardData => _currentCardData;
         
         void Start()
         {
