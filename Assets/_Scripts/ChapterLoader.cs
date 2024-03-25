@@ -1,5 +1,4 @@
 using _Scripts.Configs;
-using Source.Scripts.Configs;
 using UnityEngine;
 
 public class ChapterLoader : MonoBehaviourSingleton<ChapterLoader>

@@ -29,11 +29,15 @@ MonoBehaviour:
     choiceRu: "\u0420\u0430\u0441\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
       \u0434\u0435\u0432\u0443\u0448\u043A\u0443"
     choiceEn: Take a better look at the girl
-    statChanges: []
+    statChanges:
+    - type: 0
+      value: 2
   rightSwipe:
     nextCard: {fileID: 11400000, guid: b4283187892e4ea4fab5082b6e0848c9, type: 2}
     choiceRu: "\u0414\u043E\u0441\u0442\u0430\u0442\u044C \u043A\u043B\u044F\u043F"
     choiceEn: Get the gag out
-    statChanges: []
+    statChanges:
+    - type: 0
+      value: -2
   endGameType: 0
   isLastCard: 0

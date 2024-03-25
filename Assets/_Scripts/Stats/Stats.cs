@@ -1,36 +1,28 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-[Serializable]
 public class Stats
 {
-    private Dictionary<StatsType, Stat> _stats = new Dictionary<StatsType, Stat>(); //Пустой словарь <StatsType, Stat>
-    private List<Stat> _statsList = new List<Stat>();                               //Пустой лист <Stat>
-
-    //public Stat ZeroStat => _statsList.FirstOrDefault(stat => stat.currentGameValue <= 0); 
-    public event Action<StatsType, int> OnStatChanged;                             //Объявление события
+    public Dictionary<StatsType, Stat> _statsDictionary = new(100);          // 100 KeyValue pairs
+    public event Action<StatsType, int> OnStatChanged;
 
     public void AddStat(StatsType type, int startValue, int maxValue)
     {
-        var stat = new Stat(type, startValue, maxValue);                    //Создается объект Stat
-        _stats.Add(type, stat);                                                       //В словарь добавляется объект Stat
-        _statsList.Add(stat);                                                         //В стат лист добавляется Stat
+        var stat = new Stat( startValue, maxValue);                    
+        _statsDictionary.Add(type, stat);                                                     
     }
-    
 
-    public void ChangeStat(StatsType type, int value)                                           //Изменение стата StatType type на значение value
+    public void ChangeStat(StatsType type, int value)               // Change value of KeyStats
     {
-        var stat = _stats[type];                                                                //из словаря берется переменная stat с ключом type
-        var newValue = Mathf.Clamp(stat.currentGameValue + value, 0, stat.maxValue);    //создается переменная newValue которая хранит в себе значение обновленного value
-        stat.currentGameValue = newValue;                                                           //в значение игрового value записывается новое value
-        OnStatChanged?.Invoke(type, stat.currentGameValue);                                        //вызов события OnStatChanged
+        var stat = _statsDictionary[type];                                                                
+        var newValue = Mathf.Clamp(stat.currentGameValue + value, 0, stat.maxValue);    
+        stat.currentGameValue = newValue;                                                           
+        OnStatChanged?.Invoke(type, stat.currentGameValue);                                        
     }
 
     public Stat GetStat(StatsType type)
     {
-        return _stats[type];
+        return _statsDictionary[type];
     }
-
 }

@@ -1,7 +1,4 @@
-﻿
-using Source.Scripts.Configs;
-
-namespace YG
+﻿namespace YG
 {
     [System.Serializable]
     public class SavesYG
@@ -19,8 +16,7 @@ namespace YG
         public bool[] openLevels = new bool[3];
 
         // Ваши сохранения
-
-        public SaveData saveData = null;
+        
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 

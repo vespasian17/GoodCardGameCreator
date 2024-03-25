@@ -1,70 +1,65 @@
-using Source.Scripts.Configs;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using YG;
 
-namespace _Scripts
+public class ContentSetter : MonoBehaviourSingleton<ContentSetter>
 {
-    public class ContentSetter : MonoBehaviour
-    {
-        [SerializeField] private CardInstantiator _cardInstantiator;
-        [SerializeField] private TextMeshProUGUI textContent;
-        private YandexGameSaveSystem _saveSystem;
-        private CardData _currentCardData;
-        private bool _isGameLoaded;
-        private SaveData _saveData;
+    private CardInstantiator _cardInstantiator;
+    [SerializeField] private TextMeshProUGUI textContent;
+    private CardData _currentCardData;
+    private bool _isGameLoaded;
 
-        public CardData CurrentCardData => _currentCardData;
+    public CardData CurrentCardData => _currentCardData;
         
-        void Start()
-        {
-            _saveData = new SaveData();
-            _saveSystem = this.AddComponent<YandexGameSaveSystem>();
-            SetDataOnLoad();
-            _cardInstantiator.CardCreated += OnEnableCard;
-        }
+    void Start()
+    {
+        _cardInstantiator = CardInstantiator.Instance;
+        SetDataOnLoad();
+        _cardInstantiator.CardCreated += OnEnableCard;
+    }
 
-        private void OnEnableCard()
+    private void OnEnableCard()
+    {
+        if (_cardInstantiator.IsLeftSwipe == true)              //nullable bool!!!
         {
-            if (_cardInstantiator.IsLeftSwipe == true)              //nullable bool!!!
-            {
-                Debug.Log("Left Swipe");
-                _currentCardData = _currentCardData.LeftSwipe.nextCard;
-            }
-            else if (_cardInstantiator.IsLeftSwipe == false)
-            {
-                Debug.Log("Right Swipe");
-                _currentCardData = _currentCardData.RightSwipe.nextCard;
-            }
+            Debug.Log("Left Swipe");
+            _currentCardData = _currentCardData.LeftSwipe.nextCard;
+        }
+        else if (_cardInstantiator.IsLeftSwipe == false)
+        {
+            Debug.Log("Right Swipe");
+            _currentCardData = _currentCardData.RightSwipe.nextCard;
+        }
             
-            if (_currentCardData is not null)
-            {
-                _cardInstantiator.NewCreatedCard.SetCardData(_currentCardData);
-                SetContentData();
-            }
-
-            else
-            {
-                Debug.Log("Карты закончились");
-                _cardInstantiator.CardCreated -= OnEnableCard;
-            }
-
-            _saveData.savedCardData = _currentCardData;
-            _saveSystem.Save(_saveData);
+        if (_currentCardData is not null)
+        {
+            _cardInstantiator.NewCreatedCard.SetCardData(_currentCardData);
+            SetContentData();
         }
 
-        public void SetDataOnLoad()     //реализация сейв лоад?
+        else
         {
-            if (_saveData.savedCardData is not null)
-                _saveData.savedCardData = _currentCardData;
-            else _currentCardData = ChapterLoader.Instance.ChapterCards[0];
-        }
-
-        private void SetContentData()
-        {
-            var isRu = YandexGame.savesData.language == "ru";
-            textContent.text = isRu ? _currentCardData.DescriptionRu : _currentCardData.DescriptionEn;
+            Debug.Log("Карты закончились");
+            _cardInstantiator.CardCreated -= OnEnableCard;
         }
     }
+    
+    public void SaveGame()
+    {
+        //GameSaveLoader.Instance.UpdateSavedCard(_currentCardData);                             // Обновляет данные карты для сохранения
+        GameSaveLoader.Instance.UpdateSavedStats(StatManager.Instance.StatsList);           // Обновляет данные статов для сохранения
+        GameSaveLoader.Instance.SaveDataToFile();                                           // Сохраняет в файл json
+    }
+
+    public void SetDataOnLoad()     // Устанавливает в значение текущей карты первую карту при загрузке сцены
+    {
+        _currentCardData = ChapterLoader.Instance.ChapterCards[0];
+    }
+
+    private void SetContentData()      // устанавливает описание вариантов выбора в карточку
+    {
+        var isRu = YandexGame.savesData.language == "ru";
+        textContent.text = isRu ? _currentCardData.DescriptionRu : _currentCardData.DescriptionEn;
+    }
 }
+

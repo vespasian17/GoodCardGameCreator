@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Source.Scripts.Configs;
 using TMPro;
 using UnityEngine;
 using YG;

@@ -1,2 +1,2 @@
-Build path: D:/Unity/Release/PluginYG/PluginYG
-Build number: 4
+Build path: C:/Users/vkaes/OneDrive/Рабочий стол/Unity/GameLight
+Build number: 7

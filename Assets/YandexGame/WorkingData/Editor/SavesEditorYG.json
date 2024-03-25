@@ -1,5 +1,5 @@
 {
-    "idSave": 601,
+    "idSave": 615,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -12,7 +12,7 @@
     ],
     "saveData": {
         "savedCardData": {
-            "instanceID": 24568
+            "instanceID": 0
         }
     }
 }

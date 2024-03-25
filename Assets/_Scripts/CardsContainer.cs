@@ -1,4 +1,3 @@
-using Source.Scripts.Configs;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CardsContainer", menuName = "Configs/CardsContainer")]

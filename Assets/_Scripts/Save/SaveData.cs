@@ -1,10 +1,16 @@
 using System;
-using Source.Scripts.Configs;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using YG;
 
-[Serializable]
 public class SaveData
 {
-    public CardData savedCardData;
+    private Stats _stats = new Stats();
+    public Stats Stats => _stats;
+    public CardData savedCard;      //Change to ID
+
+    public void SetStats(Stats newStats)
+    {
+        _stats = newStats;
+    }
 }

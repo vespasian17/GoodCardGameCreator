@@ -6,8 +6,8 @@ using Color = UnityEngine.Color;
 public delegate void CardMovedToLeftHandler(bool? isLeft);
 public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    [SerializeField] private float _distanceForSwipeCommit = 400;
-    [SerializeField] private Color _swipeReadyColor = Color.grey;
+    [SerializeField] private float distanceForSwipeCommit = 400;
+    [SerializeField] private Color swipeReadyColor = Color.grey;
     private Vector3 _initialPosition;
     private bool? _swipeLeft;
     private float _distanceMoved;
@@ -42,11 +42,11 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                 (_initialPosition.x - transform.localPosition.x)/(Screen.width/2)));
         }
         
-        if (Mathf.Abs(transform.localPosition.x) > _distanceForSwipeCommit)
+        if (Mathf.Abs(transform.localPosition.x) > distanceForSwipeCommit)
         {
             if (!_isColorChanged)
             {
-                transform.GetComponent<SpriteRenderer>().color = _swipeReadyColor;
+                transform.GetComponent<SpriteRenderer>().color = swipeReadyColor;
                 _isColorChanged = true;
                 Debug.Log("color change to new");
             }
@@ -69,7 +69,7 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         _distanceMoved = Mathf.Abs(transform.localPosition.x - _initialPosition.x);
-        if (_distanceMoved < _distanceForSwipeCommit)
+        if (_distanceMoved < distanceForSwipeCommit)
         {
             transform.localPosition = _initialPosition;
             transform.localEulerAngles = Vector3.zero;
@@ -85,6 +85,7 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                 _swipeLeft = true;
             }
             _isDragged = false;
+            ContentSetter.Instance.SaveGame();
             CardMovedToLeft?.Invoke(_swipeLeft);
             StartCoroutine(MovedCard());
         }
