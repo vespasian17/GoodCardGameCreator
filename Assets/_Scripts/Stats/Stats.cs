@@ -4,25 +4,78 @@ using UnityEngine;
 
 public class Stats
 {
-    public Dictionary<StatsType, Stat> _statsDictionary = new(100);          // 100 KeyValue pairs
+    private Dictionary<StatsType, Stat> statsDictionary = new(100); // 100 KeyValue pairs
     public event Action<StatsType, int> OnStatChanged;
 
-    public void AddStat(StatsType type, int startValue, int maxValue)
+    public void AddStatToStats(StatsType type, int defaultValue, int maxValue)
     {
-        var stat = new Stat( startValue, maxValue);                    
-        _statsDictionary.Add(type, stat);                                                     
+        if (!statsDictionary.ContainsKey(type))
+        {
+            var stat = new Stat(defaultValue, maxValue);
+            statsDictionary.Add(type, stat);
+        }
     }
 
-    public void ChangeStat(StatsType type, int value)               // Change value of KeyStats
+    public void ChangeStatValue(StatsType type, int value) // Change value of KeyStats
     {
-        var stat = _statsDictionary[type];                                                                
-        var newValue = Mathf.Clamp(stat.currentGameValue + value, 0, stat.maxValue);    
-        stat.currentGameValue = newValue;                                                           
-        OnStatChanged?.Invoke(type, stat.currentGameValue);                                        
+        if (statsDictionary.TryGetValue(type, out var stat))
+        {
+            var newValue = Mathf.Clamp(stat.CurrentGameValue + value, 0, stat.MaxValue);
+            stat.ChangeCurrentGameValue(newValue);
+            OnStatChanged?.Invoke(type, stat.CurrentGameValue);
+        }
+        else
+        {
+            Debug.LogWarning($"Stat of type {type} does not exist.");
+        }
     }
 
-    public Stat GetStat(StatsType type)
+    public Stat GetStatValue(StatsType type)
     {
-        return _statsDictionary[type];
+        statsDictionary.TryGetValue(type, out var stat);
+        return stat;
+    }
+
+    public void ResetStats()
+    {
+        foreach (var stat in statsDictionary.Values)
+        {
+            stat.ResetValue();
+        }
+    }
+
+    public Dictionary<StatsType, int> GetStatsDataForSaving()
+    {
+        var dictionaryForSaving = new Dictionary<StatsType, int>();
+        foreach (var stat in statsDictionary)
+        {
+            dictionaryForSaving.Add(stat.Key, stat.Value.CurrentGameValue);
+        }
+
+        return dictionaryForSaving;
+    }
+
+    public bool ContainsStat(StatsType type)
+    {
+        return statsDictionary.ContainsKey(type);
+    }
+    
+    public void SetStatValue(StatsType type, int newValue)
+    {
+        if (statsDictionary.TryGetValue(type, out var stat))
+        {
+            var clampedValue = Mathf.Clamp(newValue, 0, stat.MaxValue); // Ограничиваем значение
+            stat.ChangeCurrentGameValue(clampedValue);
+            OnStatChanged?.Invoke(type, stat.CurrentGameValue);
+        }
+        else
+        {
+            Debug.LogWarning($"Stat of type {type} does not exist.");
+        }
+    }
+
+    public void UnregisterAllHandlers()
+    {
+        OnStatChanged = null;
     }
 }

@@ -7,21 +7,10 @@ public class JsonDataService : IDataService
 {
     public bool SaveData<T>(string relativePath, T data)
     {
-        var path = Application.persistentDataPath + relativePath;
+        var path = "D:/" + relativePath;
 
         try
         {
-            if (File.Exists(path))
-            {
-                Debug.Log("Data exists. Deleting old file and writing a new one!");
-                File.Delete(path);
-            }
-            else
-            {
-                Debug.Log($"Writing file for the first time!");
-            }
-            using FileStream stream = File.Create(path);
-            stream.Close();
             File.WriteAllText(path, JsonConvert.SerializeObject(data));
             return true;
         }
@@ -34,7 +23,7 @@ public class JsonDataService : IDataService
 
     public T LoadData<T>(string relativePath)
     {
-        var path = Application.persistentDataPath + relativePath;
+        var path = "D:/" + relativePath;
 
         if (!File.Exists(path))
         {
@@ -44,13 +33,34 @@ public class JsonDataService : IDataService
 
         try
         {
-            T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+            var fileContent = File.ReadAllText(path);
+            if (string.IsNullOrWhiteSpace(fileContent))
+            {
+                Debug.LogError($"File at {path} is empty!");
+                throw new InvalidOperationException($"File at {path} is empty!");
+            }
+
+            T data = JsonConvert.DeserializeObject<T>(fileContent);
             return data;
         }
         catch (Exception e)
         {
             Debug.LogError($"Failed to load data due to: {e.Message} {e.StackTrace}");
             throw e;
+        }
+    }
+
+    public void DeleteData<T>(string relativePath)
+    {
+        var path = "D:/" + relativePath;
+
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+        else
+        {
+            Debug.Log($"File at {path} does not exist!");
         }
     }
 }
