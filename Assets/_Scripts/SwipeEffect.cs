@@ -1,4 +1,5 @@
 using System.Collections;
+using _Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Color = UnityEngine.Color;
@@ -20,7 +21,12 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void RegisterHandler(CardMovedToLeftHandler cardMoved)
     {
-        CardMovedToLeft = cardMoved;
+        CardMovedToLeft += cardMoved;
+    }
+    
+    public void UnregisterAllHandlers()
+    {
+        CardMovedToLeft = null;
     }
     private void Awake()
     {
@@ -48,12 +54,10 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             {
                 transform.GetComponent<SpriteRenderer>().color = swipeReadyColor;
                 _isColorChanged = true;
-                Debug.Log("color change to new");
             }
         }
         else if (_isColorChanged)
         {
-            Debug.Log("color change to default");
             _isColorChanged = false;
             transform.GetComponent<SpriteRenderer>().color = _defaultColor;
         }
@@ -85,8 +89,9 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                 _swipeLeft = true;
             }
             _isDragged = false;
-            ContentSetter.Instance.SaveGame();
             CardMovedToLeft?.Invoke(_swipeLeft);
+            UnregisterAllHandlers();
+            DataManager.Instance.SaveGame();        //autosave
             StartCoroutine(MovedCard());
         }
     }
@@ -109,7 +114,6 @@ public class SwipeEffect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             }
             yield return null;
         }
-        Debug.Log("Destoy this card");
         Destroy(gameObject);
     }
 }

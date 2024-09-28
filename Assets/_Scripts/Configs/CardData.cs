@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -57,10 +58,25 @@ public class CardData : ScriptableObject
     [Serializable]
     public struct Swipe
     {
+        public SwipeData swipeData;
+        public StatChange[] statChanges;
+        public EventType[] eventsHappens;
+        public EventSwipe[] runEvents;
+    }
+    
+    [Serializable]
+    public struct SwipeData
+    {
         public CardData nextCard;
         public string choiceRu;
         public string choiceEn;
-        public StatChange[] statChanges;
+    }
+    
+    [Serializable]
+    public struct EventSwipe
+    {
+        public EventType eventCondition;
+        public SwipeData swipeData;
     }
 
     [Serializable]

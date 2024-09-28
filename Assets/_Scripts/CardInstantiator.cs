@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CardInstantiator : MonoBehaviourSingleton<CardInstantiator> //Just instancing empty card object
+public class CardInstantiator : MonoBehaviourSingleton<CardInstantiator> 
 {
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform cardContainer;
@@ -9,7 +9,7 @@ public class CardInstantiator : MonoBehaviourSingleton<CardInstantiator> //Just 
     private SwipeEffect _newSwipeEffect;
     private Card _newCreatedCard;
     private bool? _isLeft;
-    
+
     public event Action CardCreated;
 
     public Card NewCreatedCard => _newCreatedCard;
@@ -23,11 +23,10 @@ public class CardInstantiator : MonoBehaviourSingleton<CardInstantiator> //Just 
 
     private bool ChildsCheck(Transform transform)
     {
-        if (transform.childCount > 0) return true;
-        return false;
+        return transform.childCount > 0;
     }
 
-    private void SubscribeOnSwipeEffect()       //Подписка на новый свайп созданной карты
+    private void SubscribeOnSwipeEffect()
     {
         if (ChildsCheck(cardContainer))
         {
@@ -36,7 +35,9 @@ public class CardInstantiator : MonoBehaviourSingleton<CardInstantiator> //Just 
                 _swipeEffect = cardContainer.GetComponentInChildren<SwipeEffect>();
             }
             else _swipeEffect = _newSwipeEffect;
-            _swipeEffect.RegisterHandler(StatManager.Instance.OnCardMoved);          //Reset handler and Register OnCardMoved
+
+            _swipeEffect.RegisterHandler(StatManager.Instance.OnCardMoved);
+            _swipeEffect.RegisterHandler(EventManager.Instance.OnCardMoved);
             _swipeEffect.CardMovedToLeft += OnCardCreated;
         }
         else Debug.Log("NoCardsInContainer");
@@ -44,17 +45,16 @@ public class CardInstantiator : MonoBehaviourSingleton<CardInstantiator> //Just 
 
     private void SpawnNewCardAsChild(Transform position)
     {
-        //need to improve spawn pos independent from parent position
         var newCard = Instantiate(cardPrefab, position);
         newCard.transform.localPosition = new Vector3(0, 0, 1);
         newCard.transform.rotation = Quaternion.identity;
-        
+
         _newSwipeEffect = newCard.GetComponent<SwipeEffect>();
         _newCreatedCard = newCard.GetComponent<Card>();
         CardCreated?.Invoke();
     }
 
-    private void OnCardCreated(bool? isLeft)      //вызывается true если влево, false если вправо
+    private void OnCardCreated(bool? isLeft)
     {
         Debug.Log("CardCreated");
         _isLeft = isLeft;

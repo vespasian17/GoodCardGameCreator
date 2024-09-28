@@ -11,7 +11,7 @@ namespace _Scripts.Configs
         public string nameRu;
         public string nameEn;
         public Color color;
-        public int startValue;
+        public int currentGameValue;
         public int maxValue;
         public int defaultValue;
     }

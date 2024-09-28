@@ -24,7 +24,7 @@ public class Card : MonoBehaviour
         
     }
     
-    public void SetCardData(CardData cardData, CharacterData charcterData)
+    public void SetCardText(CardData cardData, CharacterData charcterData)
     {
         if (charcterData != null)
         {
@@ -40,14 +40,35 @@ public class Card : MonoBehaviour
         }
             
         var isRu = YandexGame.savesData.language == "ru";
-        rightText.text = isRu ? cardData.RightSwipe.choiceRu : cardData.RightSwipe.choiceEn;
-        leftText.text = isRu ? cardData.LeftSwipe.choiceRu : cardData.LeftSwipe.choiceEn;
+        rightText.text = isRu ? cardData.RightSwipe.swipeData.choiceRu : cardData.RightSwipe.swipeData.choiceEn;
+        leftText.text = isRu ? cardData.LeftSwipe.swipeData.choiceRu : cardData.LeftSwipe.swipeData.choiceEn;
     }
     
-    public void SetCardData(CardData cardData)
+    public void SetCardText(CardData cardData)
     {
         var isRu = YandexGame.savesData.language == "ru";
-        rightText.text = isRu ? cardData.RightSwipe.choiceRu : cardData.RightSwipe.choiceEn;
-        leftText.text = isRu ? cardData.LeftSwipe.choiceRu : cardData.LeftSwipe.choiceEn;
+        rightText.text = isRu ? cardData.RightSwipe.swipeData.choiceRu : cardData.RightSwipe.swipeData.choiceEn;
+        leftText.text = isRu ? cardData.LeftSwipe.swipeData.choiceRu : cardData.LeftSwipe.swipeData.choiceEn;
+    }
+
+    public void SetDefaultLeftCardText(CardData cardData)
+    {
+        var isRu = YandexGame.savesData.language == "ru";
+        leftText.text = isRu ? cardData.LeftSwipe.swipeData.choiceRu : cardData.LeftSwipe.swipeData.choiceEn;
+    }
+    
+    public void SetDefaultRightCardText(CardData cardData)
+    {
+        var isRu = YandexGame.savesData.language == "ru";
+        rightText.text = isRu ? cardData.RightSwipe.swipeData.choiceRu : cardData.RightSwipe.swipeData.choiceEn;
+    }
+
+    public void SetCardText(CardData.SwipeData swipeData, bool isLeft)
+    {
+        var isRu = YandexGame.savesData.language == "ru";
+        if (isLeft)
+            leftText.text = isRu ? swipeData.choiceRu : swipeData.choiceEn;
+        else
+            rightText.text = isRu ? swipeData.choiceRu : swipeData.choiceEn;
     }
 }
