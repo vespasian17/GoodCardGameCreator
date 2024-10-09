@@ -32,7 +32,7 @@ MonoBehaviour:
   leftSwipe:
     swipeData:
       nextCard: {fileID: 11400000, guid: a5c3e1dab284e7148b51a23dec622ddc, type: 2}
-      choiceRu: "\u0434\u0430"
+      choiceRu: "\u041D\u0435"
       choiceEn: 
     statChanges: []
     eventsHappens: 
@@ -40,7 +40,7 @@ MonoBehaviour:
   rightSwipe:
     swipeData:
       nextCard: {fileID: 11400000, guid: af32d232f03352743b1c40bec9df39fb, type: 2}
-      choiceRu: "\u043D\u0435\u0442"
+      choiceRu: "\u0421\u044E\u0434\u0430"
       choiceEn: 
     statChanges: []
     eventsHappens: 
