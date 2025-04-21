@@ -1,6 +1,6 @@
+using _Scripts;
 using TMPro;
 using UnityEngine;
-using YG;
 
 public class Card : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     [SerializeField] private TextMeshProUGUI leftText;
     [SerializeField] private Canvas canvas;
     [SerializeField] private Vector3 characterIconPos = new Vector3(0,0,0);
+    //The language system is not realized! Chosen lang is RU by default!
     
     
     private SwipeEffect _swipeEffect;
@@ -39,33 +40,33 @@ public class Card : MonoBehaviour
             //icon.transform.localPosition = Vector3.zero;
         }
             
-        var isRu = YandexGame.savesData.language == "ru";
+        var isRu = DataManager.Instance.ChosenLanguage == "ru";
         rightText.text = isRu ? cardData.RightSwipe.swipeData.choiceRu : cardData.RightSwipe.swipeData.choiceEn;
         leftText.text = isRu ? cardData.LeftSwipe.swipeData.choiceRu : cardData.LeftSwipe.swipeData.choiceEn;
     }
     
     public void SetCardText(CardData cardData)
     {
-        var isRu = YandexGame.savesData.language == "ru";
+        var isRu = DataManager.Instance.ChosenLanguage == "ru";
         rightText.text = isRu ? cardData.RightSwipe.swipeData.choiceRu : cardData.RightSwipe.swipeData.choiceEn;
         leftText.text = isRu ? cardData.LeftSwipe.swipeData.choiceRu : cardData.LeftSwipe.swipeData.choiceEn;
     }
 
     public void SetDefaultLeftCardText(CardData cardData)
     {
-        var isRu = YandexGame.savesData.language == "ru";
+        var isRu = DataManager.Instance.ChosenLanguage == "ru";
         leftText.text = isRu ? cardData.LeftSwipe.swipeData.choiceRu : cardData.LeftSwipe.swipeData.choiceEn;
     }
     
     public void SetDefaultRightCardText(CardData cardData)
     {
-        var isRu = YandexGame.savesData.language == "ru";
+        var isRu = DataManager.Instance.ChosenLanguage == "ru";
         rightText.text = isRu ? cardData.RightSwipe.swipeData.choiceRu : cardData.RightSwipe.swipeData.choiceEn;
     }
 
     public void SetCardText(CardData.SwipeData swipeData, bool isLeft)
     {
-        var isRu = YandexGame.savesData.language == "ru";
+        var isRu = DataManager.Instance.ChosenLanguage == "ru";
         if (isLeft)
             leftText.text = isRu ? swipeData.choiceRu : swipeData.choiceEn;
         else

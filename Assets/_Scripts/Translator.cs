@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using _Scripts;
 using TMPro;
 using UnityEngine;
-using YG;
 
 public class Translator : MonoBehaviour
 {
@@ -14,11 +12,10 @@ public class Translator : MonoBehaviour
 
     private void OnEnable()
     {
-            
-        YandexGame.SwitchLangEvent += UpdateText;
+        //YandexGame.SwitchLangEvent += UpdateText;
     }
 
-    private void OnDestroy() => YandexGame.SwitchLangEvent -= UpdateText;
+    //private void OnDestroy() => YandexGame.SwitchLangEvent -= UpdateText;
 
     private void Awake()
     {
@@ -27,7 +24,7 @@ public class Translator : MonoBehaviour
 
     private void Start()
     {
-        UpdateText(YandexGame.savesData.language);
+        UpdateText(DataManager.Instance.ChosenLanguage);
     }
 
     private void UpdateText(string lang)
@@ -47,6 +44,6 @@ public class Translator : MonoBehaviour
     public void SetValue(int value)
     {
         _value = value;
-        UpdateText(YandexGame.savesData.language);
+        UpdateText(DataManager.Instance.ChosenLanguage);
     }
 }

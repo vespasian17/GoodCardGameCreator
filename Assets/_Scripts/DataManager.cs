@@ -19,6 +19,7 @@ namespace _Scripts
         private CardData _currentCard;
         private CharacterData[] _characters;
         private StatData[] _statsData;
+        private string _chosenLanguage;
     
         public SaveData SaveData => _saveData;
         public Stats GameStats => _gameStats;
@@ -27,6 +28,7 @@ namespace _Scripts
         public CharacterData[] Characters => _characters;
         public StatData[] StatsData => _statsData;
         public GameEventFlags EventFlags => _eventFlags;
+        public String ChosenLanguage => _chosenLanguage;
 
         public event Action OnChapterLoaded;
         
@@ -39,6 +41,7 @@ namespace _Scripts
             _statsData = Resources.LoadAll<StatData>("Stats");
             _currentCard = Resources.Load<CardData>(_defaultCardPath);
             _characters = Resources.LoadAll<CharacterData>("Characters");
+            _chosenLanguage = "ru"; //The language system is not realized yet!!! RU by default!!!
             
             _eventFlags.FillEventsDictionary();
             

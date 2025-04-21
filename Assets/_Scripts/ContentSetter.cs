@@ -1,7 +1,6 @@
 using _Scripts;
 using TMPro;
 using UnityEngine;
-using YG;
 
 
 public class ContentSetter : MonoBehaviourSingleton<ContentSetter>
@@ -36,7 +35,7 @@ public class ContentSetter : MonoBehaviourSingleton<ContentSetter>
 
     private void SetTextContentData()
     {
-        var isRu = YandexGame.savesData.language == "ru";
+        var isRu = DataManager.Instance.ChosenLanguage == "ru";
         textContent.text = isRu ? DataManager.Instance.CurrentCard.DescriptionRu : DataManager.Instance.CurrentCard.DescriptionEn;
     }
     
